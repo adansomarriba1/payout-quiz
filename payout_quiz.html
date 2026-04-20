@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>What Are You Owed? | Payout Quiz</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #0d2137;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .quiz-wrap {
+      width: 100%;
+      max-width: 480px;
+    }
+
+    /* BRAND */
+    .brand {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+    .brand-name {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: #3cb5f6;
+    }
+
+    /* CARD */
+    .card {
+      background: #ffffff;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    }
+
+    /* PROGRESS */
+    .progress-bar-wrap {
+      height: 4px;
+      background: #e8e8e8;
+    }
+    .progress-bar {
+      height: 4px;
+      background: #3cb5f6;
+      transition: width 0.4s ease;
+    }
+
+    /* CARD BODY */
+    .card-body { padding: 32px 28px 28px; }
+
+    .step-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #3cb5f6;
+      margin-bottom: 12px;
+    }
+
+    .question {
+      font-size: 22px;
+      font-weight: 900;
+      color: #0d2137;
+      line-height: 1.25;
+      margin-bottom: 8px;
+    }
+
+    .question-sub {
+      font-size: 13px;
+      color: #777;
+      line-height: 1.5;
+      margin-bottom: 28px;
+    }
+
+    /* BUTTONS */
+    .btn-group {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .btn-yes {
+      background: #0d2137;
+      color: #ffffff;
+      border: none;
+      border-radius: 10px;
+      padding: 16px 24px;
+      font-size: 16px;
+      font-weight: 800;
+      font-family: inherit;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .btn-yes:hover { background: #163352; transform: translateY(-1px); }
+    .btn-yes:active { transform: translateY(0); }
+
+    .btn-no {
+      background: #f5f5f5;
+      color: #555;
+      border: none;
+      border-radius: 10px;
+      padding: 16px 24px;
+      font-size: 16px;
+      font-weight: 700;
+      font-family: inherit;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn-no:hover { background: #ebebeb; }
+
+    .btn-amount {
+      font-size: 13px;
+      font-weight: 700;
+      color: #3cb5f6;
+      background: rgba(60,181,246,0.1);
+      padding: 4px 10px;
+      border-radius: 20px;
+    }
+
+    /* SCREEN TRANSITIONS */
+    .screen { display: none; }
+    .screen.active { display: block; }
+
+    /* INTRO SCREEN */
+    .intro-header {
+      background: #0d2137;
+      padding: 32px 28px 28px;
+      text-align: center;
+    }
+    .intro-emoji {
+      font-size: 48px;
+      margin-bottom: 12px;
+    }
+    .intro-title {
+      font-size: 26px;
+      font-weight: 900;
+      color: #ffffff;
+      line-height: 1.2;
+      margin-bottom: 8px;
+    }
+    .intro-title span { color: #3cb5f6; }
+    .intro-sub {
+      font-size: 14px;
+      color: #a8c4d8;
+      line-height: 1.5;
+    }
+    .intro-body { padding: 28px; }
+    .intro-body p {
+      font-size: 14px;
+      color: #555;
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+    .intro-body strong { color: #0d2137; }
+    .btn-start {
+      width: 100%;
+      background: #3cb5f6;
+      color: #0d2137;
+      border: none;
+      border-radius: 10px;
+      padding: 16px 24px;
+      font-size: 16px;
+      font-weight: 900;
+      font-family: inherit;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+    }
+    .btn-start:hover { background: #2da8ec; transform: translateY(-1px); }
+
+    /* RESULT SCREEN */
+    .result-header {
+      background: #0d2137;
+      padding: 32px 28px 28px;
+      text-align: center;
+    }
+    .result-icon { font-size: 48px; margin-bottom: 12px; }
+    .result-label {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #3cb5f6;
+      margin-bottom: 8px;
+    }
+    .result-amount {
+      font-size: 52px;
+      font-weight: 900;
+      color: #ffffff;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .result-amount span { color: #3cb5f6; }
+    .result-sub {
+      font-size: 14px;
+      color: #a8c4d8;
+    }
+
+    .result-body { padding: 24px 28px 28px; }
+
+    .result-breakdown {
+      margin-bottom: 20px;
+    }
+    .breakdown-title {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #999;
+      margin-bottom: 10px;
+    }
+    .breakdown-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid #f5f5f5;
+    }
+    .breakdown-item:last-child { border-bottom: none; }
+    .breakdown-name {
+      font-size: 14px;
+      font-weight: 600;
+      color: #333;
+    }
+    .breakdown-amount {
+      font-size: 13px;
+      font-weight: 800;
+      color: #0d2137;
+      background: #f0f9ff;
+      padding: 3px 10px;
+      border-radius: 20px;
+    }
+    .breakdown-none {
+      font-size: 13px;
+      color: #bbb;
+    }
+
+    .result-cta-box {
+      background: #3cb5f6;
+      border-radius: 10px;
+      padding: 22px;
+      text-align: center;
+    }
+    .result-cta-head {
+      font-size: 16px;
+      font-weight: 900;
+      color: #0d2137;
+      margin-bottom: 6px;
+      line-height: 1.3;
+    }
+    .result-cta-sub {
+      font-size: 12px;
+      color: #0d2137;
+      opacity: 0.8;
+      margin-bottom: 16px;
+      line-height: 1.5;
+    }
+    .btn-claim {
+      display: block;
+      width: 100%;
+      background: #0d2137;
+      color: #ffffff;
+      border: none;
+      border-radius: 8px;
+      padding: 14px 24px;
+      font-size: 15px;
+      font-weight: 900;
+      font-family: inherit;
+      cursor: pointer;
+      text-decoration: none;
+      text-align: center;
+      transition: background 0.2s;
+    }
+    .btn-claim:hover { background: #163352; }
+    .result-note {
+      font-size: 11px;
+      color: #0d2137;
+      opacity: 0.6;
+      margin-top: 10px;
+      text-align: center;
+    }
+
+    .zero-state {
+      text-align: center;
+      padding: 8px 0 16px;
+    }
+    .zero-state p {
+      font-size: 14px;
+      color: #555;
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="quiz-wrap">
+  <div class="brand">
+    <div class="brand-name">Hacks &amp; Hustles &bull; by Casper</div>
+  </div>
+
+  <div class="card">
+
+    <!-- INTRO SCREEN -->
+    <div class="screen active" id="screen-intro">
+      <div class="intro-header">
+        <div class="intro-emoji">💰</div>
+        <div class="intro-title">What Are You <span>Owed?</span></div>
+        <div class="intro-sub">5 questions. Find out how much companies may owe you right now.</div>
+      </div>
+      <div class="intro-body">
+        <p>Big companies get sued every year for overcharging, data breaches, and false advertising. They agree to pay billions in settlements — but <strong>most people never claim their share</strong> because they don't know they qualify.</p>
+        <p>Answer 5 quick questions and we'll show you exactly what you might be owed.</p>
+        <button class="btn-start" onclick="startQuiz()">Find My Money &rarr;</button>
+      </div>
+    </div>
+
+    <!-- QUESTION SCREENS -->
+    <div class="screen" id="screen-q">
+      <div class="progress-bar-wrap">
+        <div class="progress-bar" id="progress-bar"></div>
+      </div>
+      <div class="card-body">
+        <div class="step-label" id="step-label">Question 1 of 5</div>
+        <div class="question" id="question-text"></div>
+        <div class="question-sub" id="question-sub"></div>
+        <div class="btn-group">
+          <button class="btn-yes" onclick="answer(true)">
+            <span>Yes</span>
+            <span class="btn-amount" id="btn-amount-label"></span>
+          </button>
+          <button class="btn-no" onclick="answer(false)">No</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- RESULT SCREEN -->
+    <div class="screen" id="screen-result">
+      <div class="result-header">
+        <div class="result-icon" id="result-icon">🎉</div>
+        <div class="result-label">You May Be Owed</div>
+        <div class="result-amount" id="result-amount">$0</div>
+        <div class="result-sub" id="result-sub">Based on your answers</div>
+      </div>
+      <div class="result-body">
+        <div class="result-breakdown" id="result-breakdown"></div>
+        <div id="result-cta-section"></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  const questions = [
+    {
+      text: "Do you have or have you had an Amazon Prime subscription?",
+      sub: "Includes any time between June 2019 and June 2025.",
+      amount: 51,
+      label: "Up to $51",
+      settlement: "Amazon Prime Settlement",
+      detail: "Amazon tricked users into signing up for Prime and made it nearly impossible to cancel. $2.5B FTC settlement."
+    },
+    {
+      text: "Have you ever bought apps or made purchases on the Google Play Store?",
+      sub: "Any purchases between August 2016 and September 2023 count.",
+      amount: 75,
+      label: "Est. $25–$75",
+      settlement: "Google Play Store Settlement",
+      detail: "Google overcharged consumers and rigged app store competition. $630M settlement — most users get paid automatically."
+    },
+    {
+      text: "Do you pay for or have you paid for internet or cable through Comcast or Xfinity?",
+      sub: "Any Xfinity internet, cable, or TV customer qualifies.",
+      amount: 500,
+      label: "Up to $500+",
+      settlement: "Comcast / Xfinity Settlement",
+      detail: "Xfinity overcharged customers through undisclosed fees and equipment rental charges."
+    },
+    {
+      text: "Have you subscribed to Adobe products in the last 3 years?",
+      sub: "Photoshop, Acrobat, Creative Cloud, or any Adobe subscription.",
+      amount: 500,
+      label: "Up to $500",
+      settlement: "Adobe Settlement",
+      detail: "Adobe hid early termination fees in annual plans and made cancellation deliberately difficult. $150M settlement."
+    },
+    {
+      text: "Do you buy beef? Burgers, steaks, ground beef — anything at the grocery store?",
+      sub: "Any beef purchased in the U.S. between 2014 and 2019.",
+      amount: 50,
+      label: "Up to $50",
+      settlement: "Beef Price Fixing Settlement",
+      detail: "Tyson, Cargill, JBS, and National Beef allegedly coordinated to fix cattle prices, overcharging consumers for years."
+    }
+  ];
+
+  let currentQ = 0;
+  let totalOwed = 0;
+  let breakdown = [];
+
+  function startQuiz() {
+    showScreen('screen-q');
+    renderQuestion();
+  }
+
+  function renderQuestion() {
+    const q = questions[currentQ];
+    document.getElementById('step-label').textContent = `Question ${currentQ + 1} of ${questions.length}`;
+    document.getElementById('question-text').textContent = q.text;
+    document.getElementById('question-sub').textContent = q.sub;
+    document.getElementById('btn-amount-label').textContent = q.label;
+    document.getElementById('progress-bar').style.width = `${((currentQ) / questions.length) * 100}%`;
+  }
+
+  function answer(yes) {
+    const q = questions[currentQ];
+    if (yes) {
+      totalOwed += q.amount;
+      breakdown.push({ name: q.settlement, amount: q.amount, detail: q.detail });
+    }
+    currentQ++;
+    if (currentQ < questions.length) {
+      renderQuestion();
+    } else {
+      showResult();
+    }
+  }
+
+  function showResult() {
+    document.getElementById('progress-bar').style.width = '100%';
+    showScreen('screen-result');
+
+    const fmt = (n) => '$' + n.toLocaleString();
+    const amountEl = document.getElementById('result-amount');
+    const subEl = document.getElementById('result-sub');
+    const iconEl = document.getElementById('result-icon');
+    const breakdownEl = document.getElementById('result-breakdown');
+    const ctaEl = document.getElementById('result-cta-section');
+
+    if (totalOwed > 0) {
+      amountEl.innerHTML = `<span>${fmt(totalOwed)}</span>+`;
+      subEl.textContent = `across ${breakdown.length} potential settlement${breakdown.length > 1 ? 's' : ''}`;
+      iconEl.textContent = '🎉';
+
+      let bdHTML = `<div class="breakdown-title">Your potential settlements</div>`;
+      breakdown.forEach(item => {
+        bdHTML += `
+          <div class="breakdown-item">
+            <div class="breakdown-name">${item.name}</div>
+            <div class="breakdown-amount">Up to ${fmt(item.amount)}</div>
+          </div>`;
+      });
+      breakdownEl.innerHTML = bdHTML;
+
+      ctaEl.innerHTML = `
+        <div class="result-cta-box">
+          <div class="result-cta-head">Claim it all in one place — for free.</div>
+          <div class="result-cta-sub">Payout finds every settlement you qualify for and lets you file in under 5 minutes. No lawyer. No paperwork.</div>
+          <a href="https://www.trypayout.app/casper" class="btn-claim">Start Claiming My Money &rarr;</a>
+          <div class="result-note">Free to use. Available on iOS &amp; Android.</div>
+        </div>`;
+    } else {
+      amountEl.innerHTML = `<span>$0</span>`;
+      iconEl.textContent = '🔍';
+      subEl.textContent = 'based on your answers — but there may be more';
+      breakdownEl.innerHTML = '';
+      ctaEl.innerHTML = `
+        <div class="zero-state">
+          <p>You didn't qualify for these specific settlements — but there are <strong>hundreds of active settlements</strong> right now. Payout scans all of them and shows you every single one you're eligible for.</p>
+        </div>
+        <div class="result-cta-box">
+          <div class="result-cta-head">Check all active settlements — free.</div>
+          <div class="result-cta-sub">Most people qualify for at least 2–3 they had no idea about.</div>
+          <a href="https://www.trypayout.app/casper" class="btn-claim">See What I Qualify For &rarr;</a>
+          <div class="result-note">Free to use. Available on iOS &amp; Android.</div>
+        </div>`;
+    }
+  }
+
+  function showScreen(id) {
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+  }
+</script>
+
+</body>
+</html>
