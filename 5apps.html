@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>5 Apps That Are Quietly Making People Money</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #ffffff;
+      color: #1a1a1a;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .page { max-width: 680px; margin: 0 auto; background: #ffffff; }
+
+    /* HEADER */
+    .header {
+      background: #0d2137;
+      padding: 28px 32px 24px;
+      text-align: center;
+    }
+    .header-brand {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: #3cb5f6;
+      margin-bottom: 6px;
+    }
+    .header-title {
+      font-size: 28px;
+      font-weight: 900;
+      color: #ffffff;
+      line-height: 1.2;
+      margin-bottom: 8px;
+    }
+    .header-title span { color: #3cb5f6; }
+    .header-sub {
+      font-size: 14px;
+      color: #a8c4d8;
+      font-weight: 400;
+      line-height: 1.5;
+    }
+
+    /* INTRO */
+    .intro {
+      background: #f0f9ff;
+      border-left: 4px solid #3cb5f6;
+      padding: 18px 24px;
+      margin: 24px 24px 0;
+      border-radius: 0 6px 6px 0;
+    }
+    .intro p {
+      font-size: 14px;
+      line-height: 1.7;
+      color: #333;
+    }
+    .intro strong { color: #0d2137; }
+
+    /* SECTION LABEL */
+    .section-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #3cb5f6;
+      padding: 20px 24px 10px;
+    }
+
+    /* APP CARDS */
+    .app-list { padding: 0 24px; }
+
+    .app-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 18px 0;
+      border-bottom: 1px solid #f0f0f0;
+    }
+    .app-card:last-child { border-bottom: none; }
+
+    .app-num-wrap {
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
+      border: 1.5px solid #e8e8e8;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+      overflow: hidden;
+    }
+    .app-num-wrap img {
+      width: 38px;
+      height: 38px;
+      object-fit: contain;
+    }
+
+    .app-info { flex: 1; }
+
+    .app-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 4px;
+    }
+    .app-name {
+      font-size: 15px;
+      font-weight: 800;
+      color: #0d2137;
+    }
+    .app-badge {
+      font-size: 11px;
+      font-weight: 800;
+      color: #ffffff;
+      background: #3cb5f6;
+      padding: 3px 10px;
+      border-radius: 20px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .app-badge.gold {
+      background: #f59e0b;
+      color: #0d2137;
+    }
+    .app-desc {
+      font-size: 13px;
+      color: #555;
+      line-height: 1.55;
+      margin-bottom: 5px;
+    }
+    .app-how {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      color: #3cb5f6;
+    }
+
+    /* HOW TO GET STARTED */
+    .how-box {
+      background: #0d2137;
+      margin: 24px 24px 0;
+      border-radius: 10px;
+      padding: 22px 24px;
+    }
+    .how-title {
+      font-size: 15px;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 14px;
+    }
+    .how-title span { color: #3cb5f6; }
+    .steps { display: flex; flex-direction: column; gap: 10px; }
+    .step { display: flex; align-items: flex-start; gap: 12px; }
+    .step-dot {
+      width: 22px;
+      height: 22px;
+      background: #3cb5f6;
+      color: #0d2137;
+      font-size: 11px;
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .step-text {
+      font-size: 13px;
+      color: #cde3f0;
+      line-height: 1.5;
+    }
+    .step-text strong { color: #ffffff; }
+
+    /* CTA */
+    .cta-block {
+      margin: 20px 24px 0;
+      background: #3cb5f6;
+      border-radius: 10px;
+      padding: 24px;
+      text-align: center;
+    }
+    .cta-headline {
+      font-size: 18px;
+      font-weight: 900;
+      color: #0d2137;
+      margin-bottom: 6px;
+      line-height: 1.3;
+    }
+    .cta-sub {
+      font-size: 13px;
+      color: #0d2137;
+      margin-bottom: 18px;
+      line-height: 1.5;
+      opacity: 0.85;
+    }
+    .cta-button {
+      display: inline-block;
+      background: #0d2137;
+      color: #ffffff;
+      font-size: 14px;
+      font-weight: 800;
+      padding: 13px 28px;
+      border-radius: 8px;
+      text-decoration: none;
+      letter-spacing: 0.3px;
+    }
+    .cta-note {
+      font-size: 11px;
+      color: #0d2137;
+      margin-top: 10px;
+      opacity: 0.7;
+    }
+
+    /* DISCLAIMER */
+    .disclaimer {
+      padding: 16px 24px;
+      font-size: 11px;
+      color: #999;
+      line-height: 1.6;
+      text-align: center;
+    }
+
+    /* FOOTER */
+    .footer {
+      background: #0d2137;
+      padding: 18px 24px;
+      text-align: center;
+    }
+    .footer-brand {
+      font-size: 14px;
+      font-weight: 800;
+      color: #3cb5f6;
+      margin-bottom: 4px;
+    }
+    .footer-tagline {
+      font-size: 11px;
+      color: #6a8ea0;
+    }
+
+    @media print {
+      body { margin: 0; }
+      .page { max-width: 100%; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-brand">Hacks &amp; Hustles &bull; Free Guide</div>
+    <div class="header-title">5 Apps That Are <span>Quietly Making</span><br>People Money</div>
+    <div class="header-sub">Most people have no idea these exist. All free. All legitimate.</div>
+  </div>
+
+  <!-- INTRO -->
+  <div class="intro">
+    <p>There are apps sitting in the App Store right now that are <strong>putting real money back in people's pockets</strong> every month — and almost nobody talks about them. No surveys, no gimmicks. Just apps that find money you're already owed or quietly earn in the background while you do nothing.</p>
+  </div>
+
+  <div class="section-label">The List — Start With #1</div>
+
+  <div class="app-list">
+
+    <!-- APP 1: PAYOUT -->
+    <div class="app-card">
+      <div class="app-num-wrap"><img src="https://www.google.com/s2/favicons?sz=128&domain=trypayout.app" alt="Payout"></div>
+      <div class="app-info">
+        <div class="app-row">
+          <div class="app-name">Payout</div>
+          <div class="app-badge gold">Start Here</div>
+        </div>
+        <div class="app-desc">Every year, companies get sued for overcharging, data breaches, and false advertising — and agree to pay billions in settlements. Most people never see a dime because they don't know they qualify. Payout scans every active class action settlement and shows you exactly which ones you're owed money from. The average user finds $50–$200+ they didn't know about. Claims take under 5 minutes inside the app.</div>
+        <div class="app-how">Free &bull; iOS &amp; Android &bull; trypayout.app/cnewsletter</div>
+      </div>
+    </div>
+
+    <!-- APP 2: RAKUTEN -->
+    <div class="app-card">
+      <div class="app-num-wrap"><img src="https://www.google.com/s2/favicons?sz=128&domain=rakuten.com" alt="Rakuten"></div>
+      <div class="app-info">
+        <div class="app-row">
+          <div class="app-name">Rakuten</div>
+          <div class="app-badge">Cashback</div>
+        </div>
+        <div class="app-desc">Every time you shop online — Amazon, Target, Nike, Walmart, anywhere — Rakuten pays you a percentage back automatically. No coupons. No codes. You just shop the way you normally would and money shows up in your account every quarter. Members average $150+ back per year just from purchases they were already making.</div>
+        <div class="app-how">Free &bull; Browser extension + app &bull; rakuten.com</div>
+      </div>
+    </div>
+
+    <!-- APP 3: IBOTTA -->
+    <div class="app-card">
+      <div class="app-num-wrap"><img src="https://www.google.com/s2/favicons?sz=128&domain=ibotta.com" alt="Ibotta"></div>
+      <div class="app-info">
+        <div class="app-row">
+          <div class="app-name">Ibotta</div>
+          <div class="app-badge">Grocery Cash</div>
+        </div>
+        <div class="app-desc">Ibotta gives you cashback on groceries at virtually any store — Walmart, Kroger, Aldi, Costco, you name it. Scan your receipt after shopping and cash out via PayPal or Venmo. No brand switching required. People who use it consistently pull $20–$50 back per month just on their normal grocery run.</div>
+        <div class="app-how">Free &bull; iOS &amp; Android &bull; ibotta.com</div>
+      </div>
+    </div>
+
+    <!-- APP 4: ACORNS -->
+    <div class="app-card">
+      <div class="app-num-wrap"><img src="https://www.google.com/s2/favicons?sz=128&domain=acorns.com" alt="Acorns"></div>
+      <div class="app-info">
+        <div class="app-row">
+          <div class="app-name">Acorns</div>
+          <div class="app-badge">Micro-Invest</div>
+        </div>
+        <div class="app-desc">Acorns rounds up every purchase you make to the nearest dollar and invests the difference automatically. Buy a coffee for $4.60, Acorns invests $0.40. It sounds small but it adds up — the average user invests $30–$50 per month without thinking about it. Your spare change gets put into a diversified portfolio and grows over time.</div>
+        <div class="app-how">Free to start &bull; iOS &amp; Android &bull; acorns.com</div>
+      </div>
+    </div>
+
+    <!-- APP 5: ROCKET MONEY -->
+    <div class="app-card">
+      <div class="app-num-wrap"><img src="https://www.google.com/s2/favicons?sz=128&domain=rocketmoney.com" alt="Rocket Money"></div>
+      <div class="app-info">
+        <div class="app-row">
+          <div class="app-name">Rocket Money</div>
+          <div class="app-badge">Kill Subscriptions</div>
+        </div>
+        <div class="app-desc">The average American wastes $219 per month on subscriptions they forgot they signed up for. Rocket Money scans your bank account, finds every recurring charge, and cancels the ones you don't want — with one tap. It also negotiates your bills (cable, internet, phone) on your behalf and keeps a cut of the savings only if it works.</div>
+        <div class="app-how">Free tier available &bull; iOS &amp; Android &bull; rocketmoney.com</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- HOW TO START -->
+  <div class="how-box">
+    <div class="how-title">How to <span>Actually Use This List</span></div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-dot">1</div>
+        <div class="step-text"><strong>Download Payout first.</strong> It finds money you're already owed from settlements — this is the fastest win on the list. Go to trypayout.app/cnewsletter or search "Payout" in your app store.</div>
+      </div>
+      <div class="step">
+        <div class="step-dot">2</div>
+        <div class="step-text"><strong>Install Rakuten's browser extension.</strong> Takes 60 seconds. Every online purchase from that point forward earns you cashback automatically.</div>
+      </div>
+      <div class="step">
+        <div class="step-dot">3</div>
+        <div class="step-text"><strong>Run Rocket Money.</strong> Let it scan your subscriptions. Cancel anything you forgot you were paying for. Most people find at least one.</div>
+      </div>
+      <div class="step">
+        <div class="step-dot">4</div>
+        <div class="step-text"><strong>Add Ibotta and Acorns when you're ready.</strong> These work best as long-term habits — the money compounds over months, not days.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-block">
+    <div class="cta-headline">Start with Payout — it's the fastest money on this list.</div>
+    <div class="cta-sub">There are hundreds of active settlements right now. Most people qualify for at least 2–3 and never know it. Check yours in 2 minutes — it's free.</div>
+    <a href="https://www.trypayout.app/cnewsletter" class="cta-button">See What You're Owed &rarr;</a>
+    <div class="cta-note">Free to check. No lawyer needed. Takes 2 minutes.</div>
+  </div>
+
+  <!-- DISCLAIMER -->
+  <div class="disclaimer">
+    This guide is for informational purposes only. App features and earnings estimates may vary. Payout connects users to official settlement administrators and does not file claims on your behalf. Always review app terms before use.
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-brand">Hacks &amp; Hustles</div>
+    <div class="footer-tagline">by Casper &bull; Weekly money tips you actually use</div>
+  </div>
+
+</div>
+</body>
+</html>
