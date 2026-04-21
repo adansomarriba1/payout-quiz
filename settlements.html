@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>5 Companies That Owe You Money Right Now</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #ffffff;
+      color: #1a1a1a;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .page {
+      max-width: 680px;
+      margin: 0 auto;
+      background: #ffffff;
+    }
+
+    /* ── HEADER ── */
+    .header {
+      background: #0d2137;
+      padding: 28px 32px 24px;
+      text-align: center;
+    }
+
+    .header-brand {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: #3cb5f6;
+      margin-bottom: 6px;
+    }
+
+    .header-title {
+      font-size: 30px;
+      font-weight: 900;
+      color: #ffffff;
+      line-height: 1.2;
+      margin-bottom: 8px;
+    }
+
+    .header-title span {
+      color: #3cb5f6;
+    }
+
+    .header-sub {
+      font-size: 14px;
+      color: #a8c4d8;
+      font-weight: 400;
+      line-height: 1.5;
+    }
+
+    /* ── INTRO ── */
+    .intro {
+      background: #f0f9ff;
+      border-left: 4px solid #3cb5f6;
+      padding: 18px 24px;
+      margin: 24px 24px 0;
+      border-radius: 0 6px 6px 0;
+    }
+
+    .intro p {
+      font-size: 14px;
+      line-height: 1.7;
+      color: #333;
+    }
+
+    .intro strong {
+      color: #0d2137;
+    }
+
+    /* ── SECTION LABEL ── */
+    .section-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #3cb5f6;
+      padding: 20px 24px 10px;
+    }
+
+    /* ── COMPANY CARD ── */
+    .company-list {
+      padding: 0 20px;
+    }
+
+    .company-card {
+      background: #fff;
+      border: 1.5px solid #eef2f6;
+      border-radius: 12px;
+      padding: 18px 16px;
+      margin-bottom: 12px;
+    }
+
+    .company-card:last-child { margin-bottom: 0; }
+
+    .company-top {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 12px;
+    }
+
+    .company-logo-wrap {
+      width: 56px;
+      height: 56px;
+      border-radius: 12px;
+      border: 1.5px solid #e8e8e8;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+
+    .company-logo-wrap svg {
+      width: 38px;
+      height: 38px;
+    }
+
+    .company-header { flex: 1; }
+
+    .company-name {
+      font-size: 16px;
+      font-weight: 900;
+      color: #0d2137;
+      margin-bottom: 4px;
+    }
+
+    .company-amount {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 800;
+      color: #ffffff;
+      background: #3cb5f6;
+      padding: 3px 10px;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+
+    .company-reason {
+      font-size: 13px;
+      color: #444;
+      line-height: 1.55;
+      margin-bottom: 12px;
+    }
+
+    .qualify-box {
+      background: #f0f9ff;
+      border-radius: 8px;
+      padding: 10px 12px;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .qualify-check {
+      font-size: 14px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .qualify-text {
+      font-size: 12px;
+      font-weight: 700;
+      color: #0d2137;
+      line-height: 1.5;
+    }
+
+    .qualify-text span {
+      font-weight: 400;
+      color: #555;
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      height: 1px;
+      background: #e8e8e8;
+      margin: 4px 24px;
+    }
+
+    /* ── HOW IT WORKS ── */
+    .how-it-works {
+      background: #0d2137;
+      margin: 24px 24px 0;
+      border-radius: 10px;
+      padding: 22px 24px;
+    }
+
+    .how-title {
+      font-size: 15px;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 14px;
+    }
+
+    .how-title span {
+      color: #3cb5f6;
+    }
+
+    .steps {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .step {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .step-dot {
+      width: 22px;
+      height: 22px;
+      background: #3cb5f6;
+      color: #0d2137;
+      font-size: 11px;
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .step-text {
+      font-size: 13px;
+      color: #cde3f0;
+      line-height: 1.5;
+    }
+
+    .step-text strong {
+      color: #ffffff;
+    }
+
+    /* ── CTA ── */
+    .cta-block {
+      margin: 20px 24px 0;
+      background: #3cb5f6;
+      border-radius: 10px;
+      padding: 24px;
+      text-align: center;
+    }
+
+    .cta-headline {
+      font-size: 18px;
+      font-weight: 900;
+      color: #0d2137;
+      margin-bottom: 6px;
+      line-height: 1.3;
+    }
+
+    .cta-sub {
+      font-size: 13px;
+      color: #0d2137;
+      margin-bottom: 18px;
+      line-height: 1.5;
+      opacity: 0.85;
+    }
+
+    .cta-button {
+      display: inline-block;
+      background: #0d2137;
+      color: #ffffff;
+      font-size: 14px;
+      font-weight: 800;
+      padding: 13px 28px;
+      border-radius: 8px;
+      text-decoration: none;
+      letter-spacing: 0.3px;
+    }
+
+    .cta-note {
+      font-size: 11px;
+      color: #0d2137;
+      margin-top: 10px;
+      opacity: 0.7;
+    }
+
+    /* ── DISCLAIMER ── */
+    .disclaimer {
+      padding: 16px 24px;
+      font-size: 11px;
+      color: #999;
+      line-height: 1.6;
+      text-align: center;
+    }
+
+    /* ── FOOTER ── */
+    .footer {
+      background: #0d2137;
+      padding: 18px 24px;
+      text-align: center;
+    }
+
+    .footer-brand {
+      font-size: 14px;
+      font-weight: 800;
+      color: #3cb5f6;
+      margin-bottom: 4px;
+    }
+
+    .footer-tagline {
+      font-size: 11px;
+      color: #6a8ea0;
+    }
+
+    /* ── PRINT ── */
+    @media print {
+      body { margin: 0; }
+      .page { max-width: 100%; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-brand">Hacks &amp; Hustles &bull; Free Guide</div>
+    <div class="header-title">5 Companies That<br><span>Owe You Money</span><br>Right Now</div>
+    <div class="header-sub">Real settlements. Real cash. Most people have no idea they qualify.</div>
+  </div>
+
+  <!-- INTRO -->
+  <div class="intro">
+    <p>Companies get sued, pay out billions, and most people <strong>never claim their share</strong> because they don't know they qualify. No lawyer. No lawsuit. Just check if your name is on the list and file a simple form.</p>
+  </div>
+
+  <!-- COMPANY LIST -->
+  <div class="section-label">Active Settlements — Updated April 18, 2026</div>
+
+  <div class="company-list">
+
+    <!-- GOOGLE PLAY -->
+    <div class="company-card">
+      <div class="company-top">
+        <div class="company-logo-wrap">
+          <img src="https://www.google.com/s2/favicons?sz=128&domain=play.google.com" alt="Google Play" style="width:44px;height:44px;object-fit:contain;">
+        </div>
+        <div class="company-header">
+          <div class="company-name">Google Play Store</div>
+          <div class="company-amount">Auto-payment</div>
+        </div>
+      </div>
+      <div class="company-reason">Google overcharged app store customers for years and got hit with a $630M lawsuit. Most people get paid automatically — no forms, no lawyer needed.</div>
+      <div class="qualify-box">
+        <div class="qualify-check">✅</div>
+        <div class="qualify-text">You qualify if: <span>You bought apps or made purchases on Google Play between 2016–2023</span></div>
+      </div>
+    </div>
+
+    <!-- CAPITAL ONE -->
+    <div class="company-card">
+      <div class="company-top">
+        <div class="company-logo-wrap">
+          <img src="https://www.google.com/s2/favicons?sz=128&domain=capitalone.com" alt="Capital One" style="width:44px;height:44px;object-fit:contain;">
+        </div>
+        <div class="company-header">
+          <div class="company-name">Capital One</div>
+          <div class="company-amount">Cash payout</div>
+        </div>
+      </div>
+      <div class="company-reason">Capital One advertised high-yield savings rates but secretly paid customers less. They got sued for $425M and account holders are getting paid back.</div>
+      <div class="qualify-box">
+        <div class="qualify-check">✅</div>
+        <div class="qualify-text">You qualify if: <span>You had a Capital One 360 Savings account</span></div>
+      </div>
+    </div>
+
+    <!-- XFINITY -->
+    <div class="company-card">
+      <div class="company-top">
+        <div class="company-logo-wrap">
+          <img src="https://www.google.com/s2/favicons?sz=128&domain=xfinity.com" alt="Xfinity" style="width:44px;height:44px;object-fit:contain;">
+        </div>
+        <div class="company-header">
+          <div class="company-name">Comcast / Xfinity</div>
+          <div class="company-amount">Up to $10,000</div>
+        </div>
+      </div>
+      <div class="company-reason">Xfinity was caught adding hidden fees to customer bills that were never disclosed. Active settlement — current and former customers can claim.</div>
+      <div class="qualify-box">
+        <div class="qualify-check">✅</div>
+        <div class="qualify-text">You qualify if: <span>You were an Xfinity internet or cable customer</span></div>
+      </div>
+    </div>
+
+    <!-- AMAZON -->
+    <div class="company-card">
+      <div class="company-top">
+        <div class="company-logo-wrap">
+          <img src="https://www.google.com/s2/favicons?sz=128&domain=amazon.com" alt="Amazon" style="width:44px;height:44px;object-fit:contain;">
+        </div>
+        <div class="company-header">
+          <div class="company-name">Amazon Prime</div>
+          <div class="company-amount">Up to $51</div>
+        </div>
+      </div>
+      <div class="company-reason">The FTC sued Amazon for tricking people into Prime and making it nearly impossible to cancel. $2.5 billion settlement. No proof needed to claim.</div>
+      <div class="qualify-box">
+        <div class="qualify-check">✅</div>
+        <div class="qualify-text">You qualify if: <span>You had Amazon Prime anytime between June 2019 – June 2025</span></div>
+      </div>
+    </div>
+
+    <!-- ADOBE -->
+    <div class="company-card">
+      <div class="company-top">
+        <div class="company-logo-wrap">
+          <img src="https://www.google.com/s2/favicons?sz=128&domain=adobe.com" alt="Adobe" style="width:44px;height:44px;object-fit:contain;">
+        </div>
+        <div class="company-header">
+          <div class="company-name">Adobe</div>
+          <div class="company-amount">Up to $500</div>
+        </div>
+      </div>
+      <div class="company-reason">Adobe hid cancellation fees in the fine print and trapped customers in year-long subscriptions. $150M settlement for anyone who got charged to cancel.</div>
+      <div class="qualify-box">
+        <div class="qualify-check">✅</div>
+        <div class="qualify-text">You qualify if: <span>You subscribed to Adobe in the last 3 years and paid a fee to cancel (or tried to)</span></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <div class="how-it-works">
+    <div class="how-title">How to Actually <span>Claim Your Money</span></div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-dot">1</div>
+        <div class="step-text"><strong>Download the Payout app.</strong> Go to trypayout.app or search "Payout" in the App Store or Google Play. It's free.</div>
+      </div>
+      <div class="step">
+        <div class="step-dot">2</div>
+        <div class="step-text"><strong>See every settlement you qualify for.</strong> Payout scans hundreds of active class action settlements and shows you only the ones you're eligible for — including the 5 above.</div>
+      </div>
+      <div class="step">
+        <div class="step-dot">3</div>
+        <div class="step-text"><strong>File in minutes inside the app.</strong> No lawyer, no paperwork. Most claims take under 5 minutes directly in Payout.</div>
+      </div>
+      <div class="step">
+        <div class="step-dot">4</div>
+        <div class="step-text"><strong>Get paid.</strong> Payouts arrive by check, PayPal, or direct deposit once the settlement closes. The app tracks everything for you.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-block">
+    <div class="cta-headline">Don't stop at 5.</div>
+    <div class="cta-sub">Payout scans ALL active class action settlements and tells you exactly which ones you qualify for. The average user finds $50+ they didn't know they were owed.</div>
+    <a href="http://www.trypayout.app/casper" class="cta-button">Check What You're Owed &rarr;</a>
+    <div class="cta-note">Free to check. Takes 2 minutes.</div>
+  </div>
+
+  <!-- DISCLAIMER -->
+  <div class="disclaimer">
+    Settlement amounts and eligibility requirements are subject to change. Always verify claim deadlines directly on official settlement administrator websites. This guide is for informational purposes only. Payout connects users to official settlement administrators — it does not file claims on your behalf.
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-brand">Hacks &amp; Hustles</div>
+    <div class="footer-tagline">by Casper Capital &bull; richeveryweek.com</div>
+  </div>
+
+</div>
+
+<style>
+#copy-btn { position: fixed; bottom: 24px; right: 24px; background: #0d2137; color: #3cb5f6; border: 2px solid #3cb5f6; padding: 12px 20px; border-radius: 8px; font-size: 14px; font-weight: 800; cursor: pointer; font-family: sans-serif; z-index: 9999; }
+#copy-btn:hover { background: #3cb5f6; color: #fff; }
+</style>
+<button id="copy-btn" onclick="var h=document.documentElement.outerHTML;var s=h.indexOf('<style>\n#copy-btn');var e=h.indexOf('</button>',s)+9;var clean=h.slice(0,s)+h.slice(e);navigator.clipboard.writeText(clean).then(function(){document.getElementById('copy-btn').textContent='Copied!';setTimeout(function(){document.getElementById('copy-btn').textContent='Copy HTML'},2000)});">Copy HTML</button>
+
+</body>
+</html>
