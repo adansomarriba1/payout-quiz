@@ -383,7 +383,7 @@
         <div class="intro-sub">5 questions. Find out how much companies may owe you right now.</div>
       </div>
       <div class="intro-body">
-        <p>Big companies settle lawsuits every year — and most people <strong>never claim their share</strong> because they don't know they qualify.</p>
+        <p>Big companies settle lawsuits every year, and most people <strong>never claim their share</strong> because they don't know they qualify.</p>
         <button class="btn-start" onclick="startQuiz()">Find My Money &rarr;</button>
       </div>
     </div>
@@ -455,7 +455,7 @@
       settlement: "Adobe Settlement",
     },
     {
-      text: "Do you buy beef? Burgers, steaks, ground beef — anything at the grocery store?",
+      text: "Do you buy beef? Burgers, steaks, ground beef, anything at the grocery store?",
       sub: "Any beef purchased in the U.S. between 2014 and 2019 counts.",
       amount: 50,
       label: "Up to $50",
@@ -524,7 +524,7 @@
 
       payoutCTAHTML = `
         <div class="result-cta-box">
-          <div class="result-cta-head">Claim it all in one place — for free.</div>
+          <div class="result-cta-head">Claim it all in one place. For free.</div>
           <div class="result-cta-sub">Payout finds every settlement you qualify for and lets you file in under 5 minutes. No lawyer. No paperwork.</div>
           <a href="https://www.trypayout.app/cnewsletter" class="btn-claim">Start Claiming My Money &rarr;</a>
           <div class="result-note">Free to use. Available on iOS &amp; Android.</div>
@@ -543,20 +543,20 @@
     } else {
       amountEl.innerHTML = `<span>$0</span>`;
       iconEl.textContent = '🔍';
-      subEl.textContent = 'based on your answers — but there may be more';
+      subEl.textContent = 'based on your answers, but there may be more';
       breakdownEl.innerHTML = '';
 
       payoutCTAHTML = `
         <div class="result-cta-box">
           <div class="result-cta-head">There are 200+ active settlements right now.</div>
-          <div class="result-cta-sub">Payout scans all of them and shows you every single one you qualify for — most people find 2 or 3 they had no idea about.</div>
+          <div class="result-cta-sub">Payout scans all of them and shows you every single one you qualify for. Most people find 2 or 3 they had no idea about.</div>
           <a href="https://www.trypayout.app/cnewsletter" class="btn-claim">See What I Qualify For &rarr;</a>
           <div class="result-note">Free to use. Available on iOS &amp; Android.</div>
         </div>`;
 
       ctaEl.innerHTML = `
         <div class="email-gate" id="email-gate">
-          <div class="email-gate-head">These 5 didn't hit — but you may still be owed.</div>
+          <div class="email-gate-head">These 5 didn't hit, but you may still be owed.</div>
           <div class="email-gate-sub">Drop your email and we'll send you the full list of active settlements you qualify for.</div>
           <input type="email" id="email-input" class="email-input" placeholder="Your email address">
           <div id="email-error" class="email-error" style="display:none;margin-bottom:8px;"></div>
