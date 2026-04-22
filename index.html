@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>What Are You Owed? | Payout Quiz</title>
+  <title>What Are You Owed? | Richer Every Week</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 
@@ -158,12 +158,13 @@
       color: #a8c4d8;
       line-height: 1.5;
     }
-    .intro-body { padding: 28px; }
+    .intro-body { padding: 24px 28px 28px; }
     .intro-body p {
       font-size: 14px;
       color: #555;
       line-height: 1.7;
       margin-bottom: 20px;
+      text-align: center;
     }
     .intro-body strong { color: #0d2137; }
     .btn-start {
@@ -243,10 +244,6 @@
       padding: 3px 10px;
       border-radius: 20px;
     }
-    .breakdown-none {
-      font-size: 13px;
-      color: #bbb;
-    }
 
     .result-cta-box {
       background: #3cb5f6;
@@ -303,13 +300,77 @@
       line-height: 1.6;
       margin-bottom: 16px;
     }
+
+    /* EMAIL GATE */
+    .email-gate {
+      background: #0d2137;
+      border-radius: 10px;
+      padding: 24px;
+      text-align: center;
+    }
+    .email-gate-head {
+      font-size: 17px;
+      font-weight: 900;
+      color: #ffffff;
+      margin-bottom: 6px;
+      line-height: 1.3;
+    }
+    .email-gate-sub {
+      font-size: 12px;
+      color: #a8c4d8;
+      margin-bottom: 18px;
+      line-height: 1.5;
+    }
+    .email-input {
+      width: 100%;
+      background: #ffffff;
+      border: none;
+      border-radius: 8px;
+      padding: 14px 16px;
+      font-size: 15px;
+      font-family: inherit;
+      color: #0d2137;
+      margin-bottom: 10px;
+      outline: none;
+    }
+    .email-input::placeholder { color: #aaa; }
+    .btn-email-submit {
+      width: 100%;
+      background: #3cb5f6;
+      color: #0d2137;
+      border: none;
+      border-radius: 8px;
+      padding: 14px 24px;
+      font-size: 15px;
+      font-weight: 900;
+      font-family: inherit;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn-email-submit:hover { background: #2da8ec; }
+    .btn-email-submit:disabled { opacity: 0.6; cursor: default; }
+    .email-skip {
+      margin-top: 12px;
+    }
+    .email-skip a {
+      font-size: 11px;
+      color: #a8c4d8;
+      text-decoration: none;
+      opacity: 0.7;
+    }
+    .email-skip a:hover { opacity: 1; }
+    .email-error {
+      font-size: 12px;
+      color: #ff6b6b;
+      margin-top: 8px;
+    }
   </style>
 </head>
 <body>
 
 <div class="quiz-wrap">
   <div class="brand">
-    <div class="brand-name">Hacks &amp; Hustles &bull; by Casper</div>
+    <div class="brand-name">Richer Every Week</div>
   </div>
 
   <div class="card">
@@ -322,8 +383,7 @@
         <div class="intro-sub">5 questions. Find out how much companies may owe you right now.</div>
       </div>
       <div class="intro-body">
-        <p>Big companies get sued every year for overcharging, data breaches, and false advertising. They agree to pay billions in settlements — but <strong>most people never claim their share</strong> because they don't know they qualify.</p>
-        <p>Answer 5 quick questions and we'll show you exactly what you might be owed.</p>
+        <p>Big companies settle lawsuits every year — and most people <strong>never claim their share</strong> because they don't know they qualify.</p>
         <button class="btn-start" onclick="startQuiz()">Find My Money &rarr;</button>
       </div>
     </div>
@@ -368,11 +428,10 @@
   const questions = [
     {
       text: "Do you have or have you had an Amazon Prime subscription?",
-      sub: "Includes any time between June 2019 and June 2025.",
+      sub: "Even one month between June 2019 and June 2025 counts.",
       amount: 51,
       label: "Up to $51",
       settlement: "Amazon Prime Settlement",
-      detail: "Amazon tricked users into signing up for Prime and made it nearly impossible to cancel. $2.5B FTC settlement."
     },
     {
       text: "Have you ever bought apps or made purchases on the Google Play Store?",
@@ -380,7 +439,6 @@
       amount: 75,
       label: "Est. $25–$75",
       settlement: "Google Play Store Settlement",
-      detail: "Google overcharged consumers and rigged app store competition. $630M settlement — most users get paid automatically."
     },
     {
       text: "Do you pay for or have you paid for internet or cable through Comcast or Xfinity?",
@@ -388,7 +446,6 @@
       amount: 500,
       label: "Up to $500+",
       settlement: "Comcast / Xfinity Settlement",
-      detail: "Xfinity overcharged customers through undisclosed fees and equipment rental charges."
     },
     {
       text: "Have you subscribed to Adobe products in the last 3 years?",
@@ -396,21 +453,20 @@
       amount: 500,
       label: "Up to $500",
       settlement: "Adobe Settlement",
-      detail: "Adobe hid early termination fees in annual plans and made cancellation deliberately difficult. $150M settlement."
     },
     {
       text: "Do you buy beef? Burgers, steaks, ground beef — anything at the grocery store?",
-      sub: "Any beef purchased in the U.S. between 2014 and 2019.",
+      sub: "Any beef purchased in the U.S. between 2014 and 2019 counts.",
       amount: 50,
       label: "Up to $50",
       settlement: "Beef Price Fixing Settlement",
-      detail: "Tyson, Cargill, JBS, and National Beef allegedly coordinated to fix cattle prices, overcharging consumers for years."
     }
   ];
 
   let currentQ = 0;
   let totalOwed = 0;
   let breakdown = [];
+  let payoutCTAHTML = '';
 
   function startQuiz() {
     showScreen('screen-q');
@@ -430,7 +486,7 @@
     const q = questions[currentQ];
     if (yes) {
       totalOwed += q.amount;
-      breakdown.push({ name: q.settlement, amount: q.amount, detail: q.detail });
+      breakdown.push({ name: q.settlement, amount: q.amount });
     }
     currentQ++;
     if (currentQ < questions.length) {
@@ -466,29 +522,86 @@
       });
       breakdownEl.innerHTML = bdHTML;
 
-      ctaEl.innerHTML = `
+      payoutCTAHTML = `
         <div class="result-cta-box">
           <div class="result-cta-head">Claim it all in one place — for free.</div>
           <div class="result-cta-sub">Payout finds every settlement you qualify for and lets you file in under 5 minutes. No lawyer. No paperwork.</div>
           <a href="https://www.trypayout.app/cnewsletter" class="btn-claim">Start Claiming My Money &rarr;</a>
           <div class="result-note">Free to use. Available on iOS &amp; Android.</div>
         </div>`;
+
+      ctaEl.innerHTML = `
+        <div class="email-gate" id="email-gate">
+          <div class="email-gate-head">Where should we send your claim links?</div>
+          <div class="email-gate-sub">We'll email you exactly how to file each one. Plus one free money hack every week.</div>
+          <input type="email" id="email-input" class="email-input" placeholder="Your email address">
+          <div id="email-error" class="email-error" style="display:none;margin-bottom:8px;"></div>
+          <button class="btn-email-submit" id="email-submit-btn" onclick="submitEmail()">Send My Claim Links &rarr;</button>
+          <div class="email-skip"><a href="#" onclick="skipEmail(event)">Skip, take me to the app &rarr;</a></div>
+        </div>`;
+
     } else {
       amountEl.innerHTML = `<span>$0</span>`;
       iconEl.textContent = '🔍';
       subEl.textContent = 'based on your answers — but there may be more';
       breakdownEl.innerHTML = '';
-      ctaEl.innerHTML = `
-        <div class="zero-state">
-          <p>You didn't qualify for these specific settlements — but there are <strong>hundreds of active settlements</strong> right now. Payout scans all of them and shows you every single one you're eligible for.</p>
-        </div>
+
+      payoutCTAHTML = `
         <div class="result-cta-box">
-          <div class="result-cta-head">Check all active settlements — free.</div>
-          <div class="result-cta-sub">Most people qualify for at least 2–3 they had no idea about.</div>
+          <div class="result-cta-head">There are 200+ active settlements right now.</div>
+          <div class="result-cta-sub">Payout scans all of them and shows you every single one you qualify for — most people find 2 or 3 they had no idea about.</div>
           <a href="https://www.trypayout.app/cnewsletter" class="btn-claim">See What I Qualify For &rarr;</a>
           <div class="result-note">Free to use. Available on iOS &amp; Android.</div>
         </div>`;
+
+      ctaEl.innerHTML = `
+        <div class="email-gate" id="email-gate">
+          <div class="email-gate-head">These 5 didn't hit — but you may still be owed.</div>
+          <div class="email-gate-sub">Drop your email and we'll send you the full list of active settlements you qualify for.</div>
+          <input type="email" id="email-input" class="email-input" placeholder="Your email address">
+          <div id="email-error" class="email-error" style="display:none;margin-bottom:8px;"></div>
+          <button class="btn-email-submit" id="email-submit-btn" onclick="submitEmail()">Send Me the Full List &rarr;</button>
+          <div class="email-skip"><a href="#" onclick="skipEmail(event)">Skip, take me to the app &rarr;</a></div>
+        </div>`;
     }
+  }
+
+  async function submitEmail() {
+    const emailInput = document.getElementById('email-input');
+    const submitBtn = document.getElementById('email-submit-btn');
+    const errorEl = document.getElementById('email-error');
+    const email = emailInput.value.trim();
+
+    if (!email || !email.includes('@')) {
+      errorEl.textContent = 'Please enter a valid email address.';
+      errorEl.style.display = 'block';
+      return;
+    }
+
+    errorEl.style.display = 'none';
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending...';
+
+    try {
+      await fetch('https://manychat-beehiiv.vercel.app/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
+    } catch (e) {
+      // fail silently — still show CTA
+    }
+
+    showPayoutCTA();
+  }
+
+  function skipEmail(e) {
+    e.preventDefault();
+    showPayoutCTA();
+  }
+
+  function showPayoutCTA() {
+    document.getElementById('result-cta-section').innerHTML = payoutCTAHTML;
   }
 
   function showScreen(id) {
