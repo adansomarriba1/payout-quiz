@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>5 Companies That Owe You Money Right Now</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #ffffff;
+      color: #1a1a1a;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .page {
+      max-width: 680px;
+      margin: 0 auto;
+      background: #ffffff;
+    }
+
+    /* ── HEADER ── */
+    .header {
+      background: #0d2137;
+      padding: 28px 32px 24px;
+      text-align: center;
+    }
+
+    .header-brand {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: #3cb5f6;
+      margin-bottom: 6px;
+    }
+
+    .header-title {
+      font-size: 30px;
+      font-weight: 900;
+      color: #ffffff;
+      line-height: 1.2;
+      margin-bottom: 8px;
+    }
+
+    .header-title span {
+      color: #3cb5f6;
+    }
+
+    .header-sub {
+      font-size: 14px;
+      color: #a8c4d8;
+      font-weight: 400;
+      line-height: 1.5;
+    }
+
+    /* ── INTRO ── */
+    .intro {
+      background: #f0f9ff;
+      border-left: 4px solid #3cb5f6;
+      padding: 18px 24px;
+      margin: 24px 24px 0;
+      border-radius: 0 6px 6px 0;
+    }
+
+    .intro p {
+      font-size: 14px;
+      line-height: 1.7;
+      color: #333;
+    }
+
+    .intro strong {
+      color: #0d2137;
+    }
+
+    /* ── SECTION LABEL ── */
+    .section-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #3cb5f6;
+      padding: 20px 24px 10px;
+    }
+
+    /* ── COMPANY CARD ── */
+    .company-list {
+      padding: 0 20px;
+    }
+
+    .company-card {
+      background: #fff;
+      border: 1.5px solid #eef2f6;
+      border-radius: 12px;
+      padding: 18px 16px;
+      margin-bottom: 12px;
+    }
+
+    .company-card:last-child { margin-bottom: 0; }
+
+    .company-top {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 12px;
+    }
+
+    .company-logo-wrap {
+      width: 56px;
+      height: 56px;
+      border-radius: 12px;
+      border: 1.5px solid #e8e8e8;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+
+    .company-logo-wrap svg {
+      width: 38px;
+      height: 38px;
+    }
+
+    .company-header { flex: 1; }
+
+    .company-name {
+      font-size: 16px;
+      font-weight: 900;
+      color: #0d2137;
+      margin-bottom: 4px;
+    }
+
+    .company-amount {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 800;
+      color: #ffffff;
+      background: #3cb5f6;
+      padding: 3px 10px;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+
+    .company-reason {
+      font-size: 13px;
+      color: #444;
+      line-height: 1.55;
+      margin-bottom: 12px;
+    }
+
+    .qualify-box {
+      background: #f0f9ff;
+      border-radius: 8px;
+      padding: 10px 12px;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .qualify-check {
+      font-size: 14px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .qualify-text {
+      font-size: 12px;
+      font-weight: 700;
+      color: #0d2137;
+      line-height: 1.5;
+    }
+
+    .qualify-text span {
+      font-weight: 400;
+      color: #555;
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      height: 1px;
+      background: #e8e8e8;
+      margin: 4px 24px;
+    }
+
+    /* ── HOW IT WORKS ── */
+    .how-it-works {
+      background: #0d2137;
+      margin: 24px 24px 0;
+      border-radius: 10px;
+      padding: 22px 24px;
+    }
+
+    .how-title {
+      font-size: 15px;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 14px;
+    }
+
+    .how-title span {
+      color: #3cb5f6;
+    }
+
+    .steps {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .step {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .step-dot {
+      width: 22px;
+      height: 22px;
+      background: #3cb5f6;
+      color: #0d2137;
+      font-size: 11px;
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .step-text {
+      font-size: 13px;
+      color: #cde3f0;
+      line-height: 1.5;
+    }
+
+    .step-text strong {
+      color: #ffffff;
+    }
+
+    /* ── CTA ── */
+    .cta-block {
+      margin: 20px 24px 0;
+      background: #3cb5f6;
+      border-radius: 10px;
+      padding: 24px;
+      text-align: center;
+    }
+
+    .cta-headline {
+      font-size: 18px;
+      font-weight: 900;
+      color: #0d2137;
+      margin-bottom: 6px;
+      line-height: 1.3;
+    }
+
+    .cta-sub {
+      font-size: 13px;
+      color: #0d2137;
+      margin-bottom: 18px;
+      line-height: 1.5;
+      opacity: 0.85;
+    }
+
+    .cta-button {
+      display: inline-block;
+      background: #0d2137;
+      color: #ffffff;
+      font-size: 14px;
+      font-weight: 800;
+      padding: 13px 28px;
+      border-radius: 8px;
+      text-decoration: none;
+      letter-spacing: 0.3px;
+    }
+
+    .cta-note {
+      font-size: 11px;
+      color: #0d2137;
+      margin-top: 10px;
+      opacity: 0.7;
+    }
+
+    /* ── DISCLAIMER ── */
+    .disclaimer {
+      padding: 16px 24px;
+      font-size: 11px;
+      color: #999;
+      line-height: 1.6;
+      text-align: center;
+    }
+
+    /* ── FOOTER ── */
+    .footer {
+      background: #0d2137;
+      padding: 18px 24px;
+      text-align: center;
+    }
+
+    .footer-brand {
+      font-size: 14px;
+      font-weight: 800;
+      color: #3cb5f6;
+      margin-bottom: 4px;
+    }
+
+    .footer-tagline {
+      font-size: 11px;
+      color: #6a8ea0;
+    }
+
+    /* ── PRINT ── */
+    @media print {
+      body { margin: 0; }
+      .page { max-width: 100%; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-brand">Hacks &amp; Hustles &bull; Free Guide</div>
+    <div class="header-title">5 Companies That<br><span>Owe You Money</span><br>Right Now</div>
+    <div class="header-sub">Real settlements. Real cash. Most people have no idea they qualify.</div>
+  </div>
+
+  <!-- INTRO -->
+  <div class="intro">
+    <p>Companies get sued, pay out billions, and most people <strong>never claim their share</strong> because they don't know they qualify. No lawyer. No lawsuit. Just check if your name is on the list and file a simple form.</p>
+  </div>
+
+  <!-- COMPANY LIST -->
+  <div class="section-label" id="section-label">Active Settlements &#8212; Loading...</div>
+
+  <div class="company-list" id="company-list">
+    <p style="padding:20px 0;color:#888;text-align:center;font-size:13px;">Loading settlements...</p>
+  </div>
+
+    <!-- HOW IT WORKS -->
+  <div class="how-it-works">
+    <div class="how-title">How to Actually <span>Claim Your Money</span></div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-dot">1</div>
+        <div class="step-text"><strong>Download the Payout app.</strong> Go to trypayout.app or search "Payout" in the App Store or Google Play. It's free.</div>
+      </div>
+      <div class="step">
+        <div class="step-dot">2</div>
+        <div class="step-text"><strong>See every settlement you qualify for.</strong> Open the app and Payout instantly shows you which ones you're eligible for — including the 5 above.</div>
+      </div>
+      <div class="step">
+        <div class="step-dot">3</div>
+        <div class="step-text"><strong>File in minutes inside the app.</strong> No lawyer, no paperwork. Most claims take under 5 minutes directly in Payout.</div>
+      </div>
+      <div class="step">
+        <div class="step-dot">4</div>
+        <div class="step-text"><strong>Get paid.</strong> Payouts arrive by check, PayPal, or direct deposit once the settlement closes. The app tracks everything for you.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-block">
+    <div class="cta-headline">Don't stop at 5.</div>
+    <div class="cta-sub">Payout scans ALL active class action settlements and tells you exactly which ones you qualify for. The average user finds $50+ they didn't know they were owed.</div>
+    <a href="http://www.trypayout.app/cnewsletter" class="cta-button">Check What You're Owed &rarr;</a>
+    <div class="cta-note">Free to check. Takes 2 minutes.</div>
+  </div>
+
+  <!-- DISCLAIMER -->
+  <div class="disclaimer">
+    Settlement amounts and eligibility requirements are subject to change. Always verify claim deadlines directly on official settlement administrator websites. This guide is for informational purposes only. Payout connects users to official settlement administrators — it does not file claims on your behalf.
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-brand">Hacks &amp; Hustles</div>
+    <div class="footer-tagline">by Casper Capital &bull; richeveryweek.com</div>
+  </div>
+
+</div>
+
+<script>
+function esc(str) {
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
+function formatAmount(s) {
+  if (s.uncapped) return 'Uncapped payout';
+  const min = s.amount && s.amount.min;
+  const max = s.amount && s.amount.max;
+  if (max > 0) return 'Up to $' + max.toLocaleString();
+  if (min > 0) return '$' + min.toLocaleString() + '+';
+  if (s.free) return 'Free money';
+  return 'Cash payout';
+}
+
+function renderCard(s) {
+  const req = (s.requirements && s.requirements.length > 0) ? s.requirements[0] : s.shortDescription;
+  const title = s.settlementTitle || s.name;
+  return '<div class="company-card">' +
+    '<div class="company-top">' +
+      '<div class="company-logo-wrap">' +
+        '<img src="' + esc(s.logo) + '" alt="' + esc(s.name) + '" style="width:44px;height:44px;object-fit:contain;" onerror="this.style.display=\'none\'">' +
+      '</div>' +
+      '<div class="company-header">' +
+        '<div class="company-name">' + esc(title) + '</div>' +
+        '<div class="company-amount">' + esc(formatAmount(s)) + '</div>' +
+      '</div>' +
+    '</div>' +
+    '<div class="company-reason">' + esc(s.shortDescription) + '</div>' +
+    '<div class="qualify-box">' +
+      '<div class="qualify-check">&#x2705;</div>' +
+      '<div class="qualify-text">You qualify if: <span>' + esc(req) + '</span></div>' +
+    '</div>' +
+  '</div>';
+}
+
+async function loadSettlements() {
+  const list = document.getElementById('company-list');
+  const label = document.getElementById('section-label');
+
+  const now = new Date();
+  const dateStr = now.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+
+  try {
+    const res = await fetch('https://payout-backend.vercel.app/api/v2/data', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ limit: 50, offset: 0 })
+    });
+    const json = await res.json();
+    const data = json.data || [];
+
+    const today = now.toISOString().slice(0, 10);
+
+    const active = data
+      .filter(s => s.deadline && s.deadline.date >= today)
+      .sort((a, b) => {
+        if (a.featured && !b.featured) return -1;
+        if (!a.featured && b.featured) return 1;
+        if (b.totalClaims !== a.totalClaims) return b.totalClaims - a.totalClaims;
+        return b.totalAmount - a.totalAmount;
+      })
+      .slice(0, 5);
+
+    label.textContent = 'Active Settlements — Updated ' + dateStr;
+
+    if (active.length === 0) {
+      list.innerHTML = '<p style="padding:20px 0;color:#888;text-align:center;font-size:13px;">No active settlements found right now. Check back soon.</p>';
+    } else {
+      list.innerHTML = active.map(renderCard).join('');
+    }
+  } catch (e) {
+    label.textContent = 'Active Settlements';
+    list.innerHTML = '<p style="padding:20px 0;color:#888;text-align:center;font-size:13px;">Unable to load settlements. Please try again later.</p>';
+  }
+}
+
+loadSettlements();
+</script>
+
+<style>
+#copy-btn { position: fixed; bottom: 24px; right: 24px; background: #0d2137; color: #3cb5f6; border: 2px solid #3cb5f6; padding: 12px 20px; border-radius: 8px; font-size: 14px; font-weight: 800; cursor: pointer; font-family: sans-serif; z-index: 9999; }
+#copy-btn:hover { background: #3cb5f6; color: #fff; }
+</style>
+<button id="copy-btn" onclick="var h=document.documentElement.outerHTML;var s=h.indexOf('<script>\nfunction esc');var e=h.indexOf('</button>',s)+9;var clean=h.slice(0,s)+h.slice(e);navigator.clipboard.writeText(clean).then(function(){document.getElementById('copy-btn').textContent='Copied!';setTimeout(function(){document.getElementById('copy-btn').textContent='Copy HTML'},2000)});">Copy HTML</button>
+
+</body>
+</html>
