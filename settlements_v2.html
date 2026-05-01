@@ -441,11 +441,7 @@ async function loadSettlements() {
   const dateStr = now.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
 
   try {
-    const res = await fetch('https://payout-backend.vercel.app/api/v2/data', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ limit: 50, offset: 0 })
-    });
+    const res = await fetch('https://manychat-beehiiv.vercel.app/api/settlements');
     const json = await res.json();
     const data = json.data || [];
 
