@@ -8,7 +8,7 @@ export default async function handler(req, res) {
     const response = await fetch('https://payout-backend.vercel.app/api/v2/data', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ limit: 50, offset: 0 }),
+      body: JSON.stringify({}),
     });
     const data = await response.json();
     res.setHeader('Cache-Control', 'public, max-age=300');
