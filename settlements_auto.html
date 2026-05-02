@@ -447,9 +447,27 @@ async function loadSettlements() {
 
     const today = now.toISOString().slice(0, 10);
 
+    // Priority brands — settlements matching these names show first
+    const PRIORITY_BRANDS = [
+      'amazon', 'google', 'apple', 'instagram', 'meta', 'facebook',
+      'tyson', 'walmart', 'target', 'netflix', 'tiktok', 'youtube',
+      'capital one', 'bank of america', 'wells fargo', 'chase',
+      'comcast', 'xfinity', 'at&t', 'verizon', 'tmobile', 't-mobile',
+      'uber', 'lyft', 'doordash', 'airbnb',
+      'nike', 'adidas', 'starbucks', 'mcdonalds', "mcdonald's",
+      'ticketmaster', 'spotify', 'adobe', 'microsoft'
+    ];
+
+    function priorityScore(s) {
+      const text = ((s.name || '') + ' ' + (s.settlementTitle || '')).toLowerCase();
+      return PRIORITY_BRANDS.some(b => text.includes(b)) ? 1 : 0;
+    }
+
     const active = data
       .filter(s => s.deadline && s.deadline.date >= today)
       .sort((a, b) => {
+        const pa = priorityScore(a), pb = priorityScore(b);
+        if (pb !== pa) return pb - pa;
         if (a.featured && !b.featured) return -1;
         if (!a.featured && b.featured) return 1;
         if (b.totalClaims !== a.totalClaims) return b.totalClaims - a.totalClaims;
