@@ -463,6 +463,11 @@ async function loadSettlements() {
       return PRIORITY_BRANDS.some(b => text.includes(b)) ? 1 : 0;
     }
 
+    // Accessibility score — no proof + free = easiest for anyone to claim
+    function accessScore(s) {
+      return (s.noProof ? 1 : 0) + (s.free ? 1 : 0);
+    }
+
     const active = data
       .filter(s => s.deadline && s.deadline.date >= today)
       .sort((a, b) => {
@@ -470,8 +475,10 @@ async function loadSettlements() {
         if (pb !== pa) return pb - pa;
         if (a.featured && !b.featured) return -1;
         if (!a.featured && b.featured) return 1;
-        if (b.totalClaims !== a.totalClaims) return b.totalClaims - a.totalClaims;
-        return b.totalAmount - a.totalAmount;
+        const aa = accessScore(a), ab = accessScore(b);
+        if (ab !== aa) return ab - aa;
+        if ((b.totalClaims || 0) !== (a.totalClaims || 0)) return (b.totalClaims || 0) - (a.totalClaims || 0);
+        return (b.totalAmount || 0) - (a.totalAmount || 0);
       })
       .slice(0, 5);
 
